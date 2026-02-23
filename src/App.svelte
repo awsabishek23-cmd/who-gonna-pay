@@ -1,4 +1,5 @@
 <script >
+    import confetti from "canvas-confetti";
     let user = $state("")
     let users = $state([])
     let payer = $state("")
@@ -11,10 +12,55 @@
         user = ""
     }
     const handleDelete = (index) => users.splice(index,1)
-    
+    const fireConfetti = () => {
+  // First burst - center explosion
+  confetti({
+    particleCount: 120,
+    spread: 80,
+    origin: { y: 0.6 },
+    gravity: 1.2,
+    ticks: 500,
+    colors: ['#ff0000', '#ffd700', '#00ff00', '#0000ff', '#ff69b4', '#ff8c00'],
+    shapes: ['square', 'circle'],
+    scalar: 1.2,
+    drift: 0.1,
+  })
+
+  // Left cannon
+  confetti({
+    particleCount: 80,
+    angle: 60,
+    spread: 55,
+    origin: { x: 0, y: 0.8 },
+    gravity: 1.0,
+    ticks: 600,
+    colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42'],
+    shapes: ['square', 'circle'],
+    scalar: 1.4,
+    drift: 0.5,
+  })
+
+  // Right cannon
+  confetti({
+    particleCount: 80,
+    angle: 120,
+    spread: 55,
+    origin: { x: 1, y: 0.8 },
+    gravity: 1.0,
+    ticks: 600,
+    colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42'],
+    shapes: ['square', 'circle'],
+    scalar: 1.4,
+    drift: -0.5,
+  })
+}
     const handlePay = () => {
       payer = users[Math.round(Math.random() * (users.length - 1))]
       resultOpposite = !resultOpposite
+      if(!resultOpposite){
+
+        fireConfetti()
+      }
     }
 </script>
 
