@@ -63,53 +63,54 @@
       }
     }
 </script>
-
-<div class="flex justify-center h-screen ">
-  <div class="container max-w-5xl px-3 mt-9">
-    <!-- svelte-ignore a11y_consider_explicit_label -->
-      {#if resultOpposite}
-        <div>
+<main>
+  <div class="flex justify-center h-screen ">
+    <div class="container max-w-5xl px-3 mt-9">
+      <!-- svelte-ignore a11y_consider_explicit_label -->
+        {#if resultOpposite}
           <div>
-            <p class="text-3xl pb-3">who gonna pay!</p>
-          </div>
-          <form onsubmit={handleSubmit}>
-              <input type="text" bind:value={user} class="border-b-2 outline-none w-full text-2xl mb-2" placeholder="Enter a name"><br>
-              <div class="flex justify-end-safe">
-                <button class="cursor-pointer">
-                  <p class="cursor-pointer bg-black text-white  px-5 py-1 rounded-full">Submit</p>
+            <div>
+              <p class="text-3xl pb-3">who gonna pay!</p>
+            </div>
+            <form onsubmit={handleSubmit}>
+                <input type="text" bind:value={user} class="border-b-2 outline-none w-full text-2xl mb-2" placeholder="Enter a name"><br>
+                <div class="flex justify-end-safe">
+                  <button class="cursor-pointer">
+                    <p class="cursor-pointer bg-black text-white  px-5 py-1 rounded-full">Submit</p>
+                  </button>
+                </div>
+            </form>
+            
+            
+            {#each users as user, index (index)}
+              <div class="flex justify-between items-center pt-5 px-0.75">
+                <p class="text-2xl">{user}</p>
+                <button onclick={() => handleDelete(index)} class="cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
                 </button>
               </div>
-          </form>
-          
-          
-          {#each users as user, index (index)}
-            <div class="flex justify-between items-center pt-5 px-0.75">
-              <p class="text-2xl">{user}</p>
-              <button onclick={() => handleDelete(index)} class="cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
-              </button>
-            </div>
-          {/each}
-          
-          {#if users.length > 1}
-            <div class="flex justify-center">
-              <button onclick={handlePay} class="cursor-pointer bg-black text-white  px-5 py-1 rounded-full mt-3">Are you ready!</button>
-            </div>
-          {/if}
-          
-          
-        </div>
-        {:else}
-          <div>
-            <div class="mt-60">
-              <p class="text-center text-4xl">Congratulations {payer}!</p>
+            {/each}
+            
+            {#if users.length > 1}
               <div class="flex justify-center">
-                <button onclick={handlePay} class="cursor-pointer bg-black text-white  px-5 py-1 rounded-full mt-3">Wanna play again?</button>
+                <button onclick={handlePay} class="cursor-pointer bg-black text-white  px-5 py-1 rounded-full mt-3">Are you ready!</button>
+              </div>
+            {/if}
+            
+            
+          </div>
+          {:else}
+            <div>
+              <div class="mt-60">
+                <p class="text-center text-4xl">Congratulations {payer}!</p>
+                <div class="flex justify-center">
+                  <button onclick={handlePay} class="cursor-pointer bg-black text-white  px-5 py-1 rounded-full mt-3">Wanna play again?</button>
+                </div>
               </div>
             </div>
-          </div>
-      {/if}
+        {/if}
+    </div>
   </div>
-</div>
+</main>
 
-<p class="text-center fixed bottom-5 w-full text-gray-400">Developed by Abishek Ravichandran</p>
+<p class="text-center fixed bottom-5 w-full">Developed by Abishek Ravichandran</p>
