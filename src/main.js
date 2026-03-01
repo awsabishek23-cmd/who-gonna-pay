@@ -1,7 +1,8 @@
 // @ts-nocheck
 import { mount } from 'svelte'
 import App from './App.svelte'
-import './main.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const app = mount(App, {
   target: document.getElementById('app'),
 })
